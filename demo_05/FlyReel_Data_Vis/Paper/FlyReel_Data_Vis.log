@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.5.23)  6 FEB 2022 15:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.5.23)  17 FEB 2022 11:04
 entering extended mode
-**./Paper_w_Data_Visualization.tex
-(Paper_w_Data_Visualization.tex
+**./FlyReel_Data_Vis.tex
+(FlyReel_Data_Vis.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-05-11>
 (C:\Users\le279259\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
@@ -186,8 +186,8 @@ pdftex.def
 File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count266
 \l__pdf_internal_box=\box49
-) (Paper_w_Data_Visualization.aux)
-\openout1 = `Paper_w_Data_Visualization.aux'.
+) (FlyReel_Data_Vis.aux)
+\openout1 = `FlyReel_Data_Vis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
@@ -219,94 +219,106 @@ LaTeX Font Info:    ... okay on input line 16.
 \makeMPintoPDFobject=\count272
 \everyMPtoPDFconversion=\toks23
 )
+<../Figures/hist_dens_log_price.pdf, id=1, 505.89pt x 505.89pt>
+File: ../Figures/hist_dens_log_price.pdf Graphic file (type pdf)
+<use ../Figures/hist_dens_log_price.pdf>
+Package pdftex.def Info: ../Figures/hist_dens_log_price.pdf  used on input line
+ 52.
+(pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
 
-pdfTeX warning: pdflatex.exe (file ../Figures/slpom_num_only.pdf): PDF inclusio
-n: found PDF version <1.7>, but at most version <1.5> allowed
-<../Figures/slpom_num_only.pdf, id=1, 505.89pt x 505.89pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[1
+
+{C:/Users/le279259/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2 <../Figur
+es/hist_dens_log_price.pdf>]
+<../Figures/dens_by_country.pdf, id=17, 505.89pt x 505.89pt>
+File: ../Figures/dens_by_country.pdf Graphic file (type pdf)
+<use ../Figures/dens_by_country.pdf>
+Package pdftex.def Info: ../Figures/dens_by_country.pdf  used on input line 90.
+
+(pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
+ [3
+
+ <../Figures/dens_by_country.pdf>]
+<../Figures/slpom_num_only.pdf, id=27, 505.89pt x 505.89pt>
 File: ../Figures/slpom_num_only.pdf Graphic file (type pdf)
 <use ../Figures/slpom_num_only.pdf>
-Package pdftex.def Info: ../Figures/slpom_num_only.pdf  used on input line 46.
+Package pdftex.def Info: ../Figures/slpom_num_only.pdf  used on input line 107.
+
 (pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [1
+ [4
 
-{C:/Users/le279259/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-
-pdfTeX warning: pdflatex.exe (file ../Figures/slpom_with_cat.pdf): PDF inclusio
-n: found PDF version <1.7>, but at most version <1.5> allowed
-<../Figures/slpom_with_cat.pdf, id=8, 505.89pt x 505.89pt>
+ <../Figures/slpom_num_only.pdf>]
+<../Figures/slpom_with_cat.pdf, id=36, 505.89pt x 505.89pt>
 File: ../Figures/slpom_with_cat.pdf Graphic file (type pdf)
 <use ../Figures/slpom_with_cat.pdf>
-Package pdftex.def Info: ../Figures/slpom_with_cat.pdf  used on input line 59.
+Package pdftex.def Info: ../Figures/slpom_with_cat.pdf  used on input line 120.
+
 (pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2 <../Figures/slpom_num_only.pdf>]
+ [5 <../Figures/slpom_with_cat.pdf>]
+
+LaTeX Warning: File `../Figures/slpom_with_sealed_mach.eps' not found on input 
+line 134.
+
 Package epstopdf Info: Source file: <../Figures/slpom_with_sealed_mach.eps>
-(epstopdf)                    date: 2022-02-06 15:35:26
-(epstopdf)                    size: 136913 bytes
 (epstopdf)             Output file: <../Figures/slpom_with_sealed_mach.pdf>
-(epstopdf)                    date: 2022-02-06 15:35:29
-(epstopdf)                    size: 223697 bytes
+(epstopdf)                    date: 2022-02-17 11:04:16
+(epstopdf)                    size: 220376 bytes
 (epstopdf)             Command: <miktex-epstopdf-unrestricted ../Figures/slpom_
 with_sealed_mach.eps>
-(epstopdf)             \includegraphics on input line 73.
+(epstopdf)             \includegraphics on input line 134.
 Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex.exe (file ../Figures/slpom_with_sealed_mach.pdf): PDF 
-inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../Figures/slpom_with_sealed_mach.pdf, id=19, 505.89pt x 505.89pt>
+<../Figures/slpom_with_sealed_mach.pdf, id=45, 505.89pt x 505.89pt>
 File: ../Figures/slpom_with_sealed_mach.pdf Graphic file (type pdf)
 <use ../Figures/slpom_with_sealed_mach.pdf>
 Package pdftex.def Info: ../Figures/slpom_with_sealed_mach.pdf  used on input l
-ine 73.
+ine 134.
 (pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3 <../Figures/slpom_with_cat.pdf>]
-
-pdfTeX warning: pdflatex.exe (file ../Figures/slpom_by_country.pdf): PDF inclus
-ion: found PDF version <1.7>, but at most version <1.5> allowed
-<../Figures/slpom_by_country.pdf, id=30, 505.89pt x 505.89pt>
+ [6 <../Figures/slpom_with_sealed_mach.pdf>]
+<../Figures/slpom_by_country.pdf, id=54, 505.89pt x 505.89pt>
 File: ../Figures/slpom_by_country.pdf Graphic file (type pdf)
 <use ../Figures/slpom_by_country.pdf>
-Package pdftex.def Info: ../Figures/slpom_by_country.pdf  used on input line 88
-.
+Package pdftex.def Info: ../Figures/slpom_by_country.pdf  used on input line 14
+9.
 (pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[4 <../Figures/slpom_with_sealed_mach.pdf>] [5 <../Figures/slpom_by_country.pdf
->] (Paper_w_Data_Visualization.aux) ) 
+ [7 <../Figures/slpom_by_country.pdf>]
+<../Figures/dotchart_brand_country.pdf, id=64, 505.89pt x 505.89pt>
+File: ../Figures/dotchart_brand_country.pdf Graphic file (type pdf)
+<use ../Figures/dotchart_brand_country.pdf>
+Package pdftex.def Info: ../Figures/dotchart_brand_country.pdf  used on input l
+ine 167.
+(pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
+ [8 <../Figures/dotchart_brand_country.pdf>]
+(FlyReel_Data_Vis.aux) ) 
 Here is how much of TeX's memory you used:
- 2925 strings out of 479163
- 43737 string characters out of 2852567
- 326508 words of memory out of 3000000
- 20518 multiletter control sequences out of 15000+600000
+ 2996 strings out of 479163
+ 46152 string characters out of 2852567
+ 328512 words of memory out of 3000000
+ 20573 multiletter control sequences out of 15000+600000
  408653 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,62p,241b,226s stack positions out of 5000i,500n,10000p,200000b,80000s
-{C:/Users/le279259/AppData/Local/Programs/
-MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/le279259/AppData/Local/Programs/Mi
-KTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/le279259/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on Paper_w_Data_Visualization.pdf (5 pages, 796193 bytes).
+ 55i,7n,62p,231b,228s stack positions out of 5000i,500n,10000p,200000b,80000s
+{C:/Users/le279259/AppData/Local/Programs/MiKTeX/fonts/
+enc/dvips/base/8r.enc}<C:/Users/le279259/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/urw/palatino/uplb8a.pfb><C:/Users/le279259/AppData/Local/Programs/MiKTeX/fo
+nts/type1/urw/palatino/uplr8a.pfb>
+Output written on FlyReel_Data_Vis.pdf (8 pages, 927603 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
+ 83 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
