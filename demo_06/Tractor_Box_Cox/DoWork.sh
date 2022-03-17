@@ -35,7 +35,7 @@ echo ""
 echo "Analyzing the data in R..."
 echo ""
 
-Rscript Code/FlyReel_Box_Cox.R > Code/FlyReel_Box_Cox.out
+Rscript Code/Tractor_Box_Cox.R > Code/Tractor_Box_Cox.out
 
 echo "#-------------------------------------------------"
 echo ""
@@ -57,10 +57,10 @@ echo ""
 cd Paper
 
 # We need options for extra permission in the VirtualBox machine.
-pdflatex -shell-escape FlyReel_Box_Cox.tex
+pdflatex -shell-escape Tractor_Box_Cox.tex
 
 # Run the command twice to obtain references in document.
-pdflatex -shell-escape FlyReel_Box_Cox.tex
+pdflatex -shell-escape Tractor_Box_Cox.tex
 
 echo ""
 

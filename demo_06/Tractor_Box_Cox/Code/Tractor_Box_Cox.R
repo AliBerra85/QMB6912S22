@@ -36,7 +36,7 @@
 rm(list=ls(all=TRUE))
 
 # Set working directory, if running interactively.
-# wd_path <- '~/GitHub/QMB6912S22/demo_06/FlyReel_Box_Cox'
+# wd_path <- '~/GitHub/QMB6912S22/demo_06/Tractor_Box_Cox'
 # setwd(wd_path)
 
 
@@ -65,44 +65,23 @@ library(EnvStats)
 # Load Data
 ##################################################
 
-# Set parameters for flyreel dataset.
-in_file_name <- sprintf('%s/%s', data_dir, 'FlyReels.csv')
-fly_col_names <- c('Name', 'Brand', 'Weight', 'Diameter', 'Width',
-                   'Price', 'Sealed', 'Country', 'Machined')
+in_file_name <- sprintf('%s/%s', data_dir, 'TRACTOR7.csv')
+tractor_sales <- read.csv(file = in_file_name)
 
-# Load data.
-flyreels <- read.csv(file = in_file_name, header = FALSE,
-                     col.names = fly_col_names)
+# Inspect the contents.
+print('Summary of tractor_sales Dataset:')
+print(summary(tractor_sales))
 
-# Initial inspection.
-print('Summary of FlyReels Dataset:')
-print(summary(flyreels))
-
+# Make sure there are no problems with the data.
 
 
 ##################################################
-# Generating Variables
+# Data Preparation
 ##################################################
 
-# Set categorical variables as factors.
-cat_var_list <- colnames(flyreels)[lapply(flyreels, class) == "character"]
-for (var_name in cat_var_list) {
-  flyreels[, var_name] <- as.factor(flyreels[, var_name])
-}
 
-# Initial inspection.
-print('FlyReels Dataset with Categorical Factors:')
-print(summary(flyreels))
-
-
-
-# Create a density variable.
-colnames(flyreels)
-flyreels[, 'Volume'] <- pi * (flyreels[, 'Diameter']/2)^2 * flyreels[, 'Width']
-flyreels[, 'Density'] <- flyreels[, 'Weight'] / flyreels[, 'Volume']
-
-# Create logarithm of dependent variable.
-flyreels[, 'log_Price'] <- log(flyreels[, 'Price'])
+# Generate a new variable log_saleprice.
+tractor_sales[, 'log_saleprice'] <- log(tractor_sales[, 'saleprice'])
 
 
 
@@ -123,18 +102,18 @@ flyreels[, 'log_Price'] <- log(flyreels[, 'Price'])
 
 
 ##################################################
-# Kernel-smoothed pdf of fly reel price.
+# Kernel-smoothed pdf of tractor price.
 print('Plotting kernel-smoothed pdf')
-print('of fly reel price.')
+print('of tractor price.')
 ##################################################
 
-density_price <- density(flyreels[, 'Price'])
+density_price <- density(tractor_sales[, 'saleprice'])
 fig_file_name <- 'density_prices.pdf'
 out_file_name <- sprintf('%s/%s', fig_dir, fig_file_name)
 pdf(out_file_name)
 plot(density_price,
-     main = 'Kernel-Smoothed pdf of Fly Reel Prices',
-     xlab = 'Price',
+     main = 'Kernel-Smoothed pdf of Tractor Prices',
+     xlab = 'saleprice',
      col = 'blue', lwd = 3)
 dev.off()
 
@@ -147,12 +126,12 @@ print('Plotting kernel-smoothed pdf')
 print('of the natural logarithm of price.')
 ##################################################
 
-density_log_price <- density(flyreels[, 'log_Price'])
+density_log_price <- density(tractor_sales[, 'log_saleprice'])
 fig_file_name <- 'density_log_prices.pdf'
 out_file_name <- sprintf('%s/%s', fig_dir, fig_file_name)
 pdf(out_file_name)
 plot(density_log_price,
-     main = 'Kernel-Smoothed pdf of the Natural Log. of Fly Reel Prices',
+     main = 'Kernel-Smoothed pdf of the Natural Log. of Tractor Prices',
      xlab = 'Logarithm of Price',
      col = 'blue', lwd = 3)
 dev.off()
@@ -169,23 +148,23 @@ print(c('Calculating Q-Q Plots of Dependent Variable.'))
 # each on a scatterplot.
 
 
-# Plot normal QQ plot for Fly Reel Prices.
+# Plot normal QQ plot for tractor Prices.
 fig_file_name <- 'qq_prices.pdf'
 out_file_name <- sprintf('%s/%s', fig_dir, fig_file_name)
 pdf(out_file_name)
-qqnorm(flyreels[, 'Price'],
-       main = 'Q-Q Plot of Fly Reel Prices') # ,
-qqline(flyreels[, 'Price'],
+qqnorm(tractor_sales[, 'saleprice'],
+       main = 'Q-Q Plot of Tractor Prices') # ,
+qqline(tractor_sales[, 'saleprice'],
        col = 'blue', lwd = 3) # ,
 dev.off()
 
-# Plot normal QQ plot for the log of Fly Reel Prices.
+# Plot normal QQ plot for the log of tractor Prices.
 fig_file_name <- 'qq_log_prices.pdf'
 out_file_name <- sprintf('%s/%s', fig_dir, fig_file_name)
 pdf(out_file_name)
-qqnorm(flyreels[, 'log_Price'],
-       main = 'Q-Q Plot of the Log. of Fly Reel Prices') # ,
-qqline(flyreels[, 'log_Price'],
+qqnorm(tractor_sales[, 'log_saleprice'],
+       main = 'Q-Q Plot of the Log. of Tractor Prices') # ,
+qqline(tractor_sales[, 'log_saleprice'],
        col = 'blue', lwd = 3) # ,
 dev.off()
 
@@ -247,7 +226,7 @@ log_like_uni <- function(price, lambda) {
 lambda_grid <- seq(-1, 2.5, by = 0.001)
 like_grid <- 0*lambda_grid
 for (lambda_num in 1:length(lambda_grid)) {
-  like_grid[lambda_num] <- log_like_uni(price = flyreels[, 'Price'],
+  like_grid[lambda_num] <- log_like_uni(price = tractor_sales[, 'saleprice'],
                                     lambda = lambda_grid[lambda_num])
 }
 
@@ -255,11 +234,11 @@ for (lambda_num in 1:length(lambda_grid)) {
 lambda_hat <- lambda_grid[which.max(like_grid)]
 like_MLE <- max(like_grid)
 # Check:
-# like_MLE == log_like_uni(price = flyreels[, 'Price'], lambda = lambda_hat)
+# like_MLE == log_like_uni(price = tractor_sales[, 'saleprice'], lambda = lambda_hat)
 
 # Calculate restricted likelihood values for mu = 0, 1.
-like_mu_0 <- log_like_uni(price = flyreels[, 'Price'], lambda = 0)
-like_mu_1 <- log_like_uni(price = flyreels[, 'Price'], lambda = 1)
+like_mu_0 <- log_like_uni(price = tractor_sales[, 'saleprice'], lambda = 0)
+like_mu_1 <- log_like_uni(price = tractor_sales[, 'saleprice'], lambda = 1)
 
 
 
@@ -302,8 +281,15 @@ p_value_0 <- 1 - pchisq(q = LR_stat_0, df = 1)
 print(p_value_0)
 p_value_1 <- 1 - pchisq(q = LR_stat_1, df = 1)
 print(p_value_1)
+
 # Statistically, this is evidence to reject them both.
 # This suggests using the transformation at the MLE.
+# However, one may want to investigate further
+# to find out whether it is worth
+# transforming the data,
+# since the Box-Cox transformation at the MLE
+# offers only a marginal improvement
+# over the log transformation.
 
 
 #--------------------------------------------------
@@ -319,12 +305,12 @@ print(p_value_1)
 
 # Use the function from the MASS package.
 # In the MASS package, the notation is the same as for a linear model.
-summary(lm(Price ~ 1, data = flyreels))
+summary(lm(saleprice ~ 1, data = tractor_sales))
 # Note the package::function_name() notation here because
 # the boxcox call is ambiguous (several boxcox functions are loaded
 # each one from a different package).
-bc_grid_MASS <- MASS::boxcox(Price ~ 1,
-                             data = flyreels,
+bc_grid_MASS <- MASS::boxcox(saleprice ~ 1,
+                             data = tractor_sales,
                              lambda = lambda_grid)
 # Find the MLE.
 max_lambda_MASS <- bc_grid_MASS$x[which.max(bc_grid_MASS$y)]
@@ -356,8 +342,8 @@ dev.off()
 fig_file_name <- 'plot_like_car.pdf'
 out_file_name <- sprintf('%s/%s', fig_dir, fig_file_name)
 pdf(out_file_name)
-bc_grid_car <- car::boxCox(object = lm(data = flyreels,
-                                       formula = Price ~ 1),
+bc_grid_car <- car::boxCox(object = lm(data = tractor_sales,
+                                       formula = saleprice ~ 1),
                            lambda = lambda_grid)
 dev.off()
 
@@ -366,14 +352,14 @@ dev.off()
 # Using the EnvStats package
 #--------------------------------------------------
 
-bc_grid_ES <- EnvStats::boxcox(x = flyreels[, 'Price'],
+bc_grid_ES <- EnvStats::boxcox(x = tractor_sales[, 'saleprice'],
                                lambda = lambda_grid,
                                optimize = FALSE,
                                objective.name = "Log-Likelihood")
 
 
 # Find optimal value of lambda.
-bc_grid_ES_opt <- EnvStats::boxcox(x = flyreels[, 'Price'],
+bc_grid_ES_opt <- EnvStats::boxcox(x = tractor_sales[, 'saleprice'],
                                    lambda = range(lambda_grid),
                                    optimize = TRUE,
                                    objective.name = "Log-Likelihood")
@@ -402,29 +388,29 @@ dev.off()
 #--------------------------------------------------
 
 
-# We already plotted normal QQ plot for Fly Reel Prices.
+# We already plotted normal QQ plot for tractor Prices.
 
 
 # Generate new dependent variable with results from estimates above.
-flyreels[, 'Trans_Price'] <- Lambda_Price(price = flyreels[, 'Price'],
+tractor_sales[, 'trans_saleprice'] <- Lambda_Price(price = tractor_sales[, 'saleprice'],
                                           lambda = lambda_hat)
 
-# Plot normal QQ plot for Transformed Fly Reel Prices.
+# Plot normal QQ plot for Transformed tractor Prices.
 fig_file_name <- 'qq_boxcox.pdf'
 out_file_name <- sprintf('%s/%s', fig_dir, fig_file_name)
 pdf(out_file_name)
-qqnorm(flyreels[, 'Trans_Price'],
-       main = 'Q-Q Plot of the Log. of Fly Reel Prices') # ,
-qqline(flyreels[, 'Trans_Price'],
+qqnorm(tractor_sales[, 'trans_saleprice'],
+       main = 'Q-Q Plot of the Log. of tractor Prices') # ,
+qqline(tractor_sales[, 'trans_saleprice'],
        col = 'blue', lwd = 3) # ,
 dev.off()
 
 # From a purely statistical perspective,
 # this provides evidence that the prices are best modeled with the transformation
-# at the optimal lambda_hat = 0.43.
+# at the optimal lambda_hat = -0.17.
 # From a practical point of view, however,
-# it is still an open question whether this
-# added complexity is warranted when other variables are added to the model.
+# the added complexity is not warranted
+# when the log transformation is close enough.
 
 
 
